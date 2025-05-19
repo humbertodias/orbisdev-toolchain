@@ -16,6 +16,11 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       run: |
         echo "DOCKER_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
+    - name: Extract REPO_NAME
+      run: |
+        REPO_NAME=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f2)
+        echo "GITHUB_REPOSITORY_NAME=$REPO_NAME" >> $GITHUB_ENV
     
     - name: Use default DOCKER_TAG
       if: startsWith(github.ref, 'refs/tags/') != true
@@ -38,7 +43,7 @@ jobs:
       with:
         push: true
 #        tags: ${{ github.repository }}:${{ env.DOCKER_TAG }}
-        tags: ${{ vars.DOCKER_USERNAME }}/${{ github.repository_name }}:${{ env.DOCKER_TAG }}
+        tags: ${{ vars.DOCKER_USERNAME }}/${{ env.GITHUB_REPOSITORY_NAME }}:${{ env.DOCKER_TAG }}
     
     - name: Send Compile action
       run: |
