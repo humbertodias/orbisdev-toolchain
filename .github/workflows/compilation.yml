@@ -12,13 +12,13 @@ jobs:
     strategy:
       matrix:
 #        os: [macos-latest, ubuntu-latest]
-        os: [ubuntu-20.04]
+        os: [ubuntu-22.04]
 
     steps:
     - uses: actions/checkout@v4
     
     - name: Install Ubuntu dependencies
-      if: matrix.os == 'ubuntu-20.04'
+      if: matrix.os == 'ubuntu-22.04'
       run: |
         sudo apt-get update
         sudo apt-get -y install texinfo bison flex findutils ninja-build
