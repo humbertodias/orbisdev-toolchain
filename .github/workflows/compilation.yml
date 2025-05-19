@@ -5,15 +5,13 @@ on:
   pull_request:
   repository_dispatch:
     types: [run_build, run_release]
-  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-#        os: [macos-latest, ubuntu-latest]
-        os: [ubuntu-latest]
+        os: [macos-latest, ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v4
