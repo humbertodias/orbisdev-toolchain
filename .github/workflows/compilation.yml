@@ -15,7 +15,7 @@ jobs:
         os: [macos-latest, ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Install Ubuntu dependencies
       if: matrix.os == 'ubuntu-latest'
@@ -43,7 +43,7 @@ jobs:
       run: |
         tar -zcvf orbisdev.tar.gz orbisdev
     
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: orbisdev-${{ steps.slug.outputs.sha8 }}-${{matrix.os}}
         path: orbisdev.tar.gz
