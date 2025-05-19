@@ -37,7 +37,8 @@ jobs:
     - uses: docker/build-push-action@v4
       with:
         push: true
-        tags: ${{ github.repository }}:${{ env.DOCKER_TAG }}
+#        tags: ${{ github.repository }}:${{ env.DOCKER_TAG }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository_name }}:${{ env.DOCKER_TAG }}
     
     - name: Send Compile action
       run: |
