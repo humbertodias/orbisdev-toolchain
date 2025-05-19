@@ -1,5 +1,5 @@
 # First stage of Dockerfile
-FROM alpine:latest
+FROM alpine:3.13
 
 ENV ORBISDEV /usr/local/orbisdev
 ENV PATH $ORBISDEV/bin:$PATH
@@ -11,7 +11,7 @@ RUN apk add build-base git bash patch wget texinfo ninja bison flex cmake python
 RUN cd /src && ./toolchain.sh
 
 # Second stage of Dockerfile
-FROM alpine:latest  
+FROM alpine:3.13  
 
 ENV ORBISDEV /usr/local/orbisdev
 ENV PATH $ORBISDEV/bin:$PATH
